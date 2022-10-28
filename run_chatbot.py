@@ -4,7 +4,7 @@ from chatbot.chatbot import Chatbot
 
 if __name__ == "__main__":
     logging.set_verbosity_error()
-    bot = Chatbot(**Chatbot._load_config()['chatbot'])
+    bot = Chatbot(**Chatbot.load_config()['chatbot'])
 
     while True:
         try:
