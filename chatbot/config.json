@@ -1,0 +1,19 @@
+{
+    "chatbot":
+    {
+        "tar": "chatbot/prompt.txt",
+        "model_type": "opt-2.7b",
+        "botname": "Alex",
+        "log_file": "conv_output.log"
+    },
+    "generation":
+    {
+        "max_length": 256,
+        "early_stopping": true,
+        "do_sample": true,
+        "num_beams": 3,
+        "repetition_penalty": 3.0,
+        "num_return_sequences": 1,
+        "return_full_text": false
+    }
+}
