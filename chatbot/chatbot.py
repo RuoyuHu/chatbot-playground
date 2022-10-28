@@ -26,11 +26,12 @@ class Chatbot():
 
         # Conversation state variables
         self.conversation = []
+        self.botname = kwargs['botname']
         self.username = "$USER"
         self.log_file = kwargs['log_file']
 
         self.display_names = {
-            Roles.BOT: kwargs['botname'],
+            Roles.BOT: self.botname,
             Roles.USER: self.username
         }
 
@@ -39,6 +40,8 @@ class Chatbot():
 
         print(f"Loading prompts...")
         self._load_prompt()
+        for i, sentence in enumerate(self.conversation):
+            self.conversation[i] = sentence.replace("$BOT", self.botname)
 
         print(f"Loading model...")
         model, tokenizer, pipeline = load_model_for_generation(**kwargs)
@@ -131,7 +134,7 @@ class Chatbot():
 
         intro_utt = f"Hi, my name is {self.display_names[Roles.BOT]}, what\'s your name?"
         self._conv_log(intro_utt, Roles.BOT, logging=False)
-        self.username = input(f"Alex: {intro_utt}\n>")
+        self.username = input(f"{self.display_names[Roles.BOT]}: {intro_utt}\n>")
         for i, utterance in enumerate(self.conversation):
             self.conversation[i] = utterance.replace('$USER', self.username)
         self.display_names[Roles.USER] = self.username
@@ -141,7 +144,7 @@ class Chatbot():
         try:
             while conversation_start:
                 prompt = self._prepare_prompt()
-                config = self._load_config()['generation']
+                config = self.load_config()['generation']
 
                 bot_response = self.pipeline(prompt, **config)
                 bot_response = self._prepare_bot_response(bot_response)
