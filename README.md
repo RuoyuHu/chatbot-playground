@@ -4,6 +4,32 @@ This folder contains the code for loading and playing with a pretrained language
 
 ***
 
+## Project Structure
+
+```
+chatbot-playground
+├── chatbot
+│   ├── README.md
+│   ├── __init__.py
+│   ├── chatbot.py
+│   ├── config.json
+│   └── prompt.txt
+├── prompting
+│   ├── README.md
+│   ├── __init__.py
+│   ├── config.json
+│   ├── modeling.py
+│   └── prompt.txt
+│   ├── prompt_loader.py
+├── utils
+│   ├── README.md
+│   ├── __init__.py
+│   ├── fprint.py
+│   └── loaders.py
+├── README.md
+└── run_chatbot.py
+```
+
 ## Downloading Pretrained Models
 
 This chatbot playground requires a pretrained generative language model to operate. You can find these on platforms such as [Huggingface](https://huggingface.co/docs/transformers/index). The framework originally uses an OPT [model](https://huggingface.co/facebook/opt-2.7b)
@@ -15,7 +41,7 @@ cd chatbot-playground
 git clone https://huggingface.co/facebook/opt-2.7b
 ```
 
-To run the chatbot using different models, please add a new model loader function to `modeling.py`, and update the model type in `config.json`
+To run the chatbot using different models, please add a new model loader function to `utils/loaders.py`, and update the model type in `chatbot/config.json`
 
 
 ## Quick start
