@@ -20,6 +20,7 @@ def load_opt_for_generation(**kwargs):
 # Model type to load function mapping
 model_type_to_func = {
     "opt-2.7b": load_opt_for_generation,
+    "opt-350m": load_opt_for_generation,
 }
 
 

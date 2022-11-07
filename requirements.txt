@@ -1,0 +1,4 @@
+##### Requirements without Version Specifiers #####
+torch
+transformers
+sentencepiece

@@ -2,7 +2,7 @@
     "chatbot":
     {
         "tar": "chatbot/prompt.txt",
-        "model_type": "opt-2.7b",
+        "model_type": "opt-350m",
         "botname": "Alex",
         "log_file": "conv_output.log"
     },
